@@ -13,12 +13,13 @@ def criar_listar_servicos(req, pk=None):
         if pk:
             try:
                 servico = Servico.objects.get(pk=pk)
+                servico_serializer = ServicoSerializer(servico)
             except Servico.DoesNotExist:
                 return Response(status=status.HTTP_404_NOT_FOUND)
         else:
             servico = Servico.objects.all()
-
-        servico_serializer = ServicoSerializer(servico, many=True)
+            servico_serializer = ServicoSerializer(servico, many=True)
+            
         return Response(servico_serializer.data, status=status.HTTP_200_OK)
 
     elif req.method == 'POST':
