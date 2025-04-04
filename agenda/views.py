@@ -29,7 +29,7 @@ def criar_listar_servicos(req, pk=None):
 
         return Response(servicos_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def criar_listar_agendamentos(req, pk=None):
     if req.method == 'GET':
         if pk:
