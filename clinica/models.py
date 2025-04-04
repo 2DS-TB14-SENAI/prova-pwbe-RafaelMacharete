@@ -13,6 +13,7 @@ class Medico(models.Model):
             int(valor[0:2])
             int(valor[3:8])
             if '/' is not valor[2]:
+              print('oi')
               raise ValidationError('Não segue o formato necessário (XX-XXXXX)')
         except ValueError:
               raise ValidationError('Não segue o formato necessário (XX-XXXXX)')
