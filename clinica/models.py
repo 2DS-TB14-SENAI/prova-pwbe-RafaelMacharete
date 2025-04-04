@@ -12,13 +12,15 @@ class Medico(models.Model):
         try:
             int(valor[0:2])
             int(valor[3:8])
+            if '/' is not valor[2]:
+              raise ValidationError('Não segue o formato necessário (XX-XXXXX)')
         except ValueError:
               raise ValidationError('Não segue o formato necessário (XX-XXXXX)')
         
     nome = models.CharField(max_length=50, validators=[MinLengthValidator(5)])
     especialidade = models.CharField(max_length=30, choices=choices)
     crm = models.CharField(max_length=8, unique=True, validators=[formatador])
-    email = models.EmailField(max_length=254)
+    email = models.EmailField(max_length=254, blank=True)
 
     def __str__(self):
         return self.nome
@@ -31,6 +33,7 @@ class Consulta(models.Model):
                 name='consulta_nao_pode_ser_em_datas_passadas'
             )
         ]
+
     choices = [
         ('agendado', 'agendado'),
         ('realizado', 'realizado'),
