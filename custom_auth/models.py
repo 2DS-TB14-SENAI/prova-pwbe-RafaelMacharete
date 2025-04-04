@@ -6,7 +6,7 @@ class CustomUser(AbstractUser):
     class Meta:
         constraints = [
             models.CheckConstraint(
-                check=models.Q(data__lt=Now()),
+                check=models.Q(birth_date__lt=Now()),
                 name='data_nascimento_nao_pode_ser_em_datas_passadas'
             )
         ]

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'agenda',
     'rest_framework',
     'rest_framework_simplejwt',
+    'custom_auth'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ MIDDLEWARE = [
 ]
 
 # settings.py
-AUTH_USER_MODEL = 'auth.CustomUser'
+AUTH_USER_MODEL = 'custom_auth.CustomUser'
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
