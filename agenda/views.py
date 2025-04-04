@@ -25,8 +25,9 @@ def criar_listar_servicos(req, pk=None):
         servicos_serializer = ServicoSerializer(data=req.data)
         if servicos_serializer.is_valid():
             servicos_serializer.save()
-            return Response(serializers.data, status=status.HTTP_201_CREATED)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(servicos_serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(servicos_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def criar_listar_agendamentos(req, pk=None):
@@ -46,5 +47,6 @@ def criar_listar_agendamentos(req, pk=None):
         agendamentos_serializer = AgendamentoSerializer(data=req.data)
         if agendamentos_serializer.is_valid():
             agendamentos_serializer.save()
-            return Response(serializers.data, status=status.HTTP_201_CREATED)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(agendamentos_serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(agendamentos_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
