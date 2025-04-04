@@ -8,5 +8,5 @@ urlpatterns = [
 
     path('api/agendamentos/', views.criar_listar_agendamentos, name='listar_servicos'),
     path('api/agendamentos/', views.criar_listar_agendamentos, name='criar_servico'),
-    path('api/agendamentos/<int:pk>', views.criar_listar_agendamentos, name='criar_consulta'),
+    path('api/agendamentos/<int:pk>/', views.criar_listar_agendamentos, name='criar_consulta'),
 ]

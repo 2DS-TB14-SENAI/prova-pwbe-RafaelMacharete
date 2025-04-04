@@ -32,15 +32,18 @@ def criar_listar_servicos(req, pk=None):
 @api_view(['GET', 'POST'])
 def criar_listar_agendamentos(req, pk=None):
     if req.method == 'GET':
+        
         if pk:
+            
             try:
                 agendamento = Agendamento.objects.get(pk=pk)
+                agendamento_serializer = AgendamentoSerializer(agendamento)
             except Agendamento.DoesNotExist:
                 return Response(status=status.HTTP_404_NOT_FOUND)
         else:
             agendamento = Agendamento.objects.all()
-            
-        agendamento_serializer = AgendamentoSerializer(agendamento, many=True)
+            agendamento_serializer = AgendamentoSerializer(agendamento, many=True)
+        
         return Response(agendamento_serializer.data, status=status.HTTP_200_OK)
 
     elif req.method == 'POST':

@@ -15,4 +15,4 @@ class Agendamento(models.Model):
     cliente_email = models.EmailField(max_length=254)
 
     def __str__(self):
-        return f'{self.paciente} - {self.medico}'
+        return self.servico
