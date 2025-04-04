@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            margin-top: 100px;
+            gap: 10px;
+        }
+
+        form input{
+            height: 40px;
+        }
+
+        
+        form button{
+            background-color: green;
+            color: white;
+        }
+
+        .links{
+            display: flex;
+            flex-direction: column;
+        }        
+        .links a{
+            font-size: 2em;
+        }
+    </style>
+  </head>
+  <body>
+    <form action="{% url 'listar_medicos' %}" method="post">
+      {% csrf_token %}
+      <input type="search" placeholder="procurar" name="search" />
+      <button type="submit">Procurar</button>
+    </form>
+
+    <div class="links">
+      <a href="{% url 'criar_consulta' %}">Form Consulta</a>
+      <a href="{% url 'listar_medicos' %}">Medicos</a>
+    </div>
+  </body>
+</html>

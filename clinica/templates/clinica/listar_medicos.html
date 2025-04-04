@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todos Medicos</title>
+  </head>
+  <body>
+    {% if procurado %}
+      <h2>Resultados para: "{{ procurado }}"</h2>
+    {% endif %}
+    {% if medicos_filtrados %}
+      <ul>
+        {% for medico in medicos_filtrados %}
+          <li>
+            {{ medico.nome }} - <i>{{ medico.especialidade }}</i>
+          </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      {% endif %}
+    <ul>
+      {% for medico in todos_medicos %}
+        <li>
+          {{ medico.nome }} - <i>{{ medico.especialidade }}</i>
+        </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
